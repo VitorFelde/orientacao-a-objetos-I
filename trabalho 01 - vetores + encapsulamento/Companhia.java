@@ -28,6 +28,10 @@ public class Companhia {
     public int getQtdeVoos() {
         return this.qtdeVoos;
     }
+    
+    public void setQtdeVoos(int qtde1) {
+        this.qtdeVoos = qtde1;
+    }
 
     public Voos getVoos(int posicao) {
         return this.vetVoos[posicao];
@@ -40,3 +44,4 @@ public class Companhia {
         }
     }
 }
+
