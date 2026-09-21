@@ -34,68 +34,80 @@ public class Sistema1 {
             }
         }
         
-            private void cadastrarVoo() throws Exception{
-                Voos v1 = new Voos();
-            
-                int idTop = c1.getQtdeVoos() + 1;
-                v1.setIdVoo(idTop);
-                
-                if (c1.getQtdeVoos() > 10) {
-                    System.out.println("\nA quantidade máxima de voos que podem ser cadastrados é 10!\n");
+          private void cadastrarVoo() throws Exception{
+              
+                    System.out.println("Digite o nome da Companhia: ");
+                    c1.setNomeCompanhia(reader.readLine());
+                    
+                    System.out.println("Digite o CNPJ da Companhia: ");
+                    c1.setCnpj(reader.readLine());
+
+                System.out.println("Digite a quantidade de vôos da companhia (Máximo de 10 por companhia): ");
+                int qtdeDesejada = Integer.parseInt(reader.readLine()); //criamos essa variavel para poder controlar a qtde de voos de cada comp
+
+                if (qtdeDesejada < 1 || (c1.getQtdeVoos() + qtdeDesejada) > 10) {
+                    System.out.println("\nQuantidade inválida! A companhia pode ter no máximo 10 voos no total.\n");
                     return;
                 }
-            
-                System.out.println("Digite a origem do vôo: ");
-                v1.setOrigem(reader.readLine());
-                
-                System.out.println("Digite o destino do vôo: ");
-                v1.setDestino(reader.readLine());
-                
-                System.out.println("Digite a data do vôo: ");
-                v1.setData(reader.readLine());
-                
-                System.out.println("Digite a hora do vôo: ");
-                v1.setHora(reader.readLine());
-                
-                do {
-                    System.out.println("Digite a quantidade de passageiros desse voo (Máximo de 50 passageiros por vôo): ");
-                    v1.setQtdePassageiros(Integer.parseInt(reader.readLine()));
-                    
-                    if (v1.getQtdePassageiros() > 50 || v1.getQtdePassageiros() < 1) {
-                        System.out.println("\nVôo precisa ter mais de 1 passageiro e menos de 50!\n");
-                    }
-                }
-                
-                while (v1.getQtdePassageiros() > 50 || v1.getQtdePassageiros() < 1);
-                
-                for (int i = 1; i <= v1.getQtdePassageiros(); i++) {
-                    Passageiros p1 = new Passageiros(); //dessa forma, toda vez que tiver um novo passageiro pra ser cadastrado, ele cadastra um novo
-                    System.out.println("\nDigite o nome do(a) " + i + "º" + " passageiro(a): ");
-                    p1.setNome(reader.readLine());
-                    
-                    System.out.println("\nDigite a idade do(a) " + i + "º" + " passageiro(a): ");
-                    p1.setIdade(Integer.parseInt(reader.readLine()));
-                    
-                    System.out.println("\nDigite o sexo do(a) " + i + "º" + " passageiro(a): ");
-                    p1.setSexo(reader.readLine());
-                    
-                    System.out.println("\nDigite o CPF do(a) " + i + "º" + " passageiro(a): ");
-                    p1.setCpf(reader.readLine());
-                
-                    v1.setPassageiros2(p1);
-                    
-                }
 
-            
-                System.out.println("Vôo cadastrado, o id desse vôo é: " + idTop);
-                
-                c1.setVoos(v1);
+                for (int v = 0; v < qtdeDesejada; v++) {
+                    Voos v1 = new Voos();
+                    
+                    int idTop = c1.getQtdeVoos() + 1;
+                    v1.setIdVoo(idTop);
+                    
+                    System.out.println("\nCadastrando Voo " + (v + 1) + " de " + qtdeDesejada + " da companhia: " + c1.getNomeCompanhia() + "\n");
+                    
+                    System.out.println("Digite a origem do vôo: ");
+                    v1.setOrigem(reader.readLine());
+                    
+                    System.out.println("Digite o destino do vôo: ");
+                    v1.setDestino(reader.readLine());
+                    
+                    System.out.println("Digite a data do vôo: ");
+                    v1.setData(reader.readLine());
+                    
+                    System.out.println("Digite a hora do vôo: ");
+                    v1.setHora(reader.readLine());
+                    
+                    do {
+                        System.out.println("Digite a quantidade de passageiros desse voo (Máximo de 50 passageiros por vôo): ");
+                        v1.setQtdePassageiros(Integer.parseInt(reader.readLine()));
+                        
+                        if (v1.getQtdePassageiros() > 50 || v1.getQtdePassageiros() < 1) {
+                            System.out.println("\nVôo precisa ter mais de 1 passageiro e menos de 50!\n");
+                        }
+                    }
+                    while (v1.getQtdePassageiros() > 50 || v1.getQtdePassageiros() < 1);
+                    
+                    for (int i = 1; i <= v1.getQtdePassageiros(); i++) {
+                        Passageiros p1 = new Passageiros(); 
+                        System.out.println("\nDigite o nome do(a) " + i + "º" + " passageiro(a): ");
+                        p1.setNome(reader.readLine());
+                        
+                        System.out.println("\nDigite a idade do(a) " + i + "º" + " passageiro(a): ");
+                        p1.setIdade(Integer.parseInt(reader.readLine()));
+                        
+                        System.out.println("\nDigite o sexo do(a) " + i + "º" + " passageiro(a): ");
+                        p1.setSexo(reader.readLine());
+                        
+                        System.out.println("\nDigite o CPF do(a) " + i + "º" + " passageiro(a): ");
+                        p1.setCpf(reader.readLine());
+                    
+                        v1.setPassageiros2(p1);
+                    }
+
+                    System.out.println("Vôo cadastrado, o id desse vôo é: " + idTop);
+                    
+                    c1.setVoos(v1);
+                }
             }
             
             private void listarVoo(){
                 for (int i = 0; i < c1.getQtdeVoos(); i++) {
                     Voos v2 = c1.getVoos(i);
                     System.out.println(
+                    "Companhia: " + c1.getNomeCompanhia() +
                     "\nOrigem do vôo " + (i + 1) + ": " + v2.getOrigem() + 
                     "\nDestino do vôo " + (i + 1) + ": " + v2.getDestino() + 
                     "\nData do vôo " + (i + 1) + ": " + v2.getData() + 
@@ -126,7 +138,9 @@ public class Sistema1 {
                     Voos v3 = c1.getVoos(i);
                     if(v3.getIdVoo() == idVoo){
                         int posVoo = 0;
-                        String fera = "Origem: " + v3.getOrigem()
+                        String fera = 
+                            "Companhia: " + c1.getNomeCompanhia() +
+                            " - Origem: " + v3.getOrigem()
                             + " - Destino: " + v3.getDestino()
                             + " - Data: " + v3.getData() +
                             " - Hora: " + v3.getHora();
@@ -152,4 +166,3 @@ public class Sistema1 {
                 }
             }
 }
-
