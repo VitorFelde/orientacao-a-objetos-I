@@ -1,7 +1,7 @@
 public class Passageiros {
     private String nome;
     private int idade;
-    private char sexo;
+    private String sexo;
     private String cpf;
     
     public void setNome(String nome) {
@@ -20,11 +20,11 @@ public class Passageiros {
         return this.idade;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return this.sexo;
     }
 
