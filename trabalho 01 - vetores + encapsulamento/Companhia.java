@@ -6,7 +6,7 @@ public class Companhia {
     
 
     public Companhia() {
-        this.vetVoos = new Voos[10];
+        this.vetVoos = new Voos[10]; //mesma coisa do passageiro no voo, estipulamos um limite de armazenamento
     }
 
     public String getNomeCompanhia() {
@@ -44,4 +44,3 @@ public class Companhia {
         }
     }
 }
-
