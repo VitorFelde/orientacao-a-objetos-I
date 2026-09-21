@@ -4,6 +4,7 @@ public class Voos {
     private String data;
     private String hora;
     private int qtdePassageiros;
+    private int qtdePassageiros2;
     private int idVoo;
     private Passageiros[] vetPassageiros;
 
@@ -11,6 +12,17 @@ public class Voos {
 
     public Voos() {
         this.vetPassageiros = new Passageiros[50];
+    }
+    
+    public void setPassageiros2(Passageiros p) {
+        if (this.qtdePassageiros2 < 50) {
+            this.vetPassageiros[qtdePassageiros2] = p;
+            qtdePassageiros2++;
+        }
+    }
+    
+    public Passageiros getPassageiros(int posicao) {
+        return this.vetPassageiros[posicao];
     }
 
     public String getOrigem() {
@@ -49,11 +61,15 @@ public class Voos {
         return this.qtdePassageiros;
     }
     
+    public void setQtdePassageiros(int qtdePassageiros) {
+        this.qtdePassageiros = qtdePassageiros;
+    }
+    
     public int getIdVoo (){
         return this.idVoo;
     }
-     public int setIdVoo (int id){
-        return this.idVoo;
+     public void setIdVoo (int id){
+        this.idVoo = id;
     }
     
 }
