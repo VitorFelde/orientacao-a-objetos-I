@@ -4,17 +4,20 @@ public class Voos {
     private String data;
     private String hora;
     private int qtdePassageiros;
-    private int qtdePassageiros2;
+    private int qtdePassageiros2; //criei 2 para melhor controle
     private int idVoo;
-    private Passageiros[] vetPassageiros;
+    private Passageiros[] vetPassageiros; //criamos o vetor
 
 
 
     public Voos() {
-        this.vetPassageiros = new Passageiros[50];
+        this.vetPassageiros = new Passageiros[50]; //para poder armazenar os 50 alunos dentro dele
     }
     
     public void setPassageiros2(Passageiros p) {
+        //basicamente aqui nessa função pegamos e criamos ela
+        //para um cadastro de passageiros com limite de 50, assim
+        //respeitando o limite estipulado no exer
         if (this.qtdePassageiros2 < 50) {
             this.vetPassageiros[qtdePassageiros2] = p;
             qtdePassageiros2++;
