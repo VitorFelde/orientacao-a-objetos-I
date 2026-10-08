@@ -11,11 +11,22 @@ public class ExLeituraArquivo {
         String linha;
 
         while ((linha = arqLeitura.readLine()) != null) {
-        linha = arqLeitura.readLine();
-        System.out.println(linha);
+            linha = arqLeitura.readLine();
+            System.out.println(linha);
         }
-
         arqLeitura.close();
+    
+        //showing only 1 field
+        arqLeitura = new BufferedReader(new FileReader(nomeArqEntrada));
+        linha = arqLeitura.readLine();
+    
+        while ((linha = arqLeitura.readLine()) != null) {
+            String[] vetCampos = linha.split(";");
+            System.out.println("Aluno: " + vetCampos[0] );
+        }
+        arqLeitura.close();
+
+
     }
 
 }
