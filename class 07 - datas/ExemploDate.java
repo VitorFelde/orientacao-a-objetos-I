@@ -1,3 +1,4 @@
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,6 +13,11 @@ public class ExemploDate {
         String dataFormatada = sdf.format(agora); //creating the string to get the value formated
 
         System.out.println("Data formatada: " + dataFormatada); //primted in formated way
+
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+
+        String dataFormatada2 = df.format(agora);
+        System.out.println("Short format: " + dataFormatada2); //other way to print exact same way 
 
         
     }
