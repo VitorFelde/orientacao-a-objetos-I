@@ -19,6 +19,15 @@ public class ExemploDate {
         String dataFormatada2 = df.format(agora);
         System.out.println("Short format: " + dataFormatada2); //other way to print exact same way 
 
+        df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        System.out.println("Medium format: " + df.format(agora)); //showing month in a verbal way
+
+        df = DateFormat.getDateInstance(DateFormat.LONG);
+        System.out.println("Long format: " + df.format(agora)); //showing the date in a very long way
+
+        df = DateFormat.getDateInstance(DateFormat.FULL);
+        System.out.println("Full format: " + df.format(agora));
+
         
     }
 }
