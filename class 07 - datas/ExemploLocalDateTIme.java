@@ -1,4 +1,3 @@
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -33,5 +32,18 @@ public class ExemploLocalDateTIme {
         System.out.println("Horas atuais: " + horaAtual.format(formatoHora));
         System.out.println("Horas atuais: " + menosUmaHora.format(formatoHora));
 
+        LocalDateTime agora = LocalDateTime.now();
+        LocalDateTime futuro = agora.plusDays(5).minusHours(12).plusMinutes(35);
+
+        DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        System.out.println("Agora: " + agora.format(formatoDataHora));
+        System.out.println("Futuro: " + futuro.format(formatoDataHora));
+
+        if (agora.equals(futuro)) {
+
+        }
+        
+        LocalDate minhaData = LocalDate.parse("05/10/2014", formatoData);
+        System.out.println("minhaData: " + minhaData);
     }
 }
