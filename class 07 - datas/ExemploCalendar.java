@@ -35,6 +35,24 @@ public class ExemploCalendar {
         System.out.println("Data abreviada: " + df.format(gc.getTime()));
         System.out.println("Vencimento: " + dtVencimento.getTime());
         System.out.println("Vencimento formatado: " + df.format(dtVencimento.getTime()));
-            
+        
+
+        System.out.println("Criando uma data específica:");
+        GregorianCalendar dtNasc = new GregorianCalendar();
+        dtNasc.set(2008, Calendar.MAY, 24);
+        System.out.println("Data de nascimento: " + df.format(dtNasc.getTime()));    
+
+        System.out.println("Craindo uma data a partir de uma String:");
+        String dataString = "15/07/2025";
+        String[] vetDataString = dataString.split("/");
+        dtNasc.set(Calendar.YEAR, Integer.parseInt(vetDataString[2]));
+        dtNasc.set(Calendar.MONTH, Integer.parseInt(vetDataString[1]) - 1); //-1 because month starts in 0
+        dtNasc.set(Calendar.DAY_OF_MONTH, Integer.parseInt(vetDataString[0]));
+        System.out.println("Nova data: " + df.format(dtNasc.getTime()));
+
+        dtNasc.set(Integer.parseInt(vetDataString[2]), Integer.parseInt(vetDataString[1]) - 1, Integer.parseInt(vetDataString[0]));
+        
+        System.out.println("Nova data: " + df.format(dtNasc.getTime()));
+
     }
 }
