@@ -8,21 +8,28 @@
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws Exception{
-
+        //like scanf
         BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
+        //writing files
+        String arqEscrever = "preco_venda.csv"; 
+        BufferedWriter escrever = new BufferedWriter(new FileWriter(arqEscrever));
+        String camposWrite = "codigo;nome_produto;preco_venda";
+        //reading files
+        String arqLeitura = "preco_custo.csv";
+        BufferedReader ler = new BufferedReader(new FileReader(arqLeitura));
+        String camposReader = "codigo;estoque;produto;preco_custo;categoria";
+
+        String linhaLeitura = "";
         
-        String arq = "preco_venda.csv"; 
-        BufferedWriter escrever = new BufferedWriter(new FileWriter(arq));
+        linhaLeitura = ler.readLine(); //getting the infos from the .csv file
 
-        String campos = "codigo;nome_produto;preco_venda";
-
-        escrever.write(campos);
+        escrever.write(camposWrite);
     
         escrever.close();
         int op;
@@ -35,9 +42,29 @@ public class Main {
             System.out.println("Escolha: ");
             op = Integer.parseInt(leitor.readLine());
 
+            switch (op) {
+                case 1:
+                    cakcularPreco();
+                break;
             
+                case 2:
+                    
+                break;
+
+                case 3:
+                    
+                break;
+
+                default:
+                
+                break;
+            }
+
+
         } while (op != 3);
 
 
-    }    
+    } 
+    
+    public void calcularPreco (){}
 }
