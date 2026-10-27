@@ -1,0 +1,43 @@
+/*Crie um programa que gere um arquivo csv com a lista de preços de venda (preco_venda.csv) dos produtos de uma loja:
+
+ -A lista de preços deve conter: código, nome produto, preço de venda
+
+ -O programa deve solicitar ao usuário a margem de lucro a ser aplicada aos produtos
+
+ -O formato do arquivo de entrada é: codigo, estoque, nome produto, preço de custo e categoria (para teste usar o arquivo preco_custo.csv)*/
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws Exception{
+
+        BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
+        
+        String arq = "preco_venda.csv"; 
+        BufferedWriter escrever = new BufferedWriter(new FileWriter(arq));
+
+        String campos = "codigo;nome_produto;preco_venda";
+
+        escrever.write(campos);
+    
+        escrever.close();
+        int op;
+        do {
+
+            System.out.println("Escolha uma das opções: ");
+            System.out.println("1) Cadastrar margem de lucro");
+            System.out.println("2)a definir");
+            System.out.println("3) Sair");
+            System.out.println("Escolha: ");
+            op = Integer.parseInt(leitor.readLine());
+
+            
+        } while (op != 3);
+
+
+    }    
+}
