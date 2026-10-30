@@ -44,7 +44,7 @@ public class Main {
 
             switch (op) {
                 case 1:
-                    cakcularPreco();
+                    //calcularPreco();
                 break;
             
                 case 2:
