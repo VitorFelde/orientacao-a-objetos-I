@@ -1,17 +1,15 @@
 public class preco_custo {
     
-    private String codigo;
+    private int codigo;
     private int estoque;
     private String produto;
     private float precoCusto;
     private String categoria;
     
-    public preco_custo pc = new preco_custo();
-
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
     public int getEstoque() {

@@ -1,41 +1,69 @@
-/*Crie um programa que gere um arquivo csv com a lista de preços de venda (preco_venda.csv) dos produtos de uma loja:
+    /*Crie um programa que gere um arquivo csv com a lista de preços de venda (preco_venda.csv) dos produtos de uma loja:
 
- -A lista de preços deve conter: código, nome produto, preço de venda
+    -A lista de preços deve conter: código, nome produto, preço de venda
 
- -O programa deve solicitar ao usuário a margem de lucro a ser aplicada aos produtos
+    -O programa deve solicitar ao usuário a margem de lucro a ser aplicada aos produtos
 
- -O formato do arquivo de entrada é: codigo, estoque, nome produto, preço de custo e categoria (para teste usar o arquivo preco_custo.csv)*/
+    -O formato do arquivo de entrada é: codigo, estoque, nome produto, preço de custo e categoria (para teste usar o arquivo preco_custo.csv)*/
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.InputStreamReader;
+    import java.io.BufferedReader;
+    import java.io.BufferedWriter;
+    import java.io.FileReader;
+    import java.io.FileWriter;
+    import java.io.InputStreamReader;
 
-public class Main {
-
-    //to get the gets and sets
-    preco_custo pc1 = new preco_custo(); 
-    preco_venda pv1 = new preco_venda(); 
-    public static void main(String[] args) throws Exception{
-        //like scanf
+    public class Main {
         BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
-        //writing files
-        String arqEscrever = "preco_venda.csv"; 
-        BufferedWriter escrever = new BufferedWriter(new FileWriter(arqEscrever));
-        String camposWrite = "codigo;nome_produto;preco_venda";
-        //reading files
-        String arqLeitura = "preco_custo.csv";
-        BufferedReader ler = new BufferedReader(new FileReader(arqLeitura));
-        String camposReader = "codigo;estoque;produto;preco_custo;categoria";
-
-        String linhaLeitura = "";
         
-        linhaLeitura = ler.readLine(); //getting the infos from the .csv file
+        public static void main(String[] args) throws Exception{
+            Main objeto = new Main();       
+            objeto.arquivos();
+            objeto.menu();
+        } 
+        
 
-        escrever.write(camposWrite);
-    
-        escrever.close();
+        public void arquivos () throws Exception{
+            
+            preco_venda pv1 = new preco_venda(); 
+            
+            //like scanf
+            
+            //writing files
+            String arqEscrever = "preco_venda.csv"; 
+            BufferedWriter escrever = new BufferedWriter(new FileWriter(arqEscrever));
+            String camposWrite = "codigo;nome_produto;preco_venda";
+            
+            //reading files
+            String arqLeitura = "preco_custo.csv";
+            BufferedReader ler = new BufferedReader(new FileReader(arqLeitura));
+            String camposReader = "codigo;estoque;produto;preco_custo;categoria";
+
+            String linhaLeitura = "";
+            
+            linhaLeitura = ler.readLine(); //getting the infos from the .csv file
+
+            escrever.write(camposWrite);
+        
+            escrever.close();
+            
+        }
+
+        public void lerArquivos(String linhaLeitura) throws Exception {
+            
+            String[] campos = linhaLeitura.split(";");
+                        
+            preco_custo pc1 = new preco_custo();
+            
+            pc1.setCodigo(Integer.parseInt(campos[0]));
+            pc1.setEstoque(Integer.parseInt(campos[1]));
+            pc1.setProduto(campos[2]);
+            pc1.setPrecoCusto(Float.parseFloat(campos[3]));           
+            pc1.setCategoria(campos[4]);
+            
+            }
+
+
+        public void menu () throws Exception{
         int op;
         do {
 
@@ -66,13 +94,10 @@ public class Main {
 
 
         } while (op != 3);
-
-
-    } 
-    
-    public void calcularPreco (float margem){
-        pc1.getCodigo(leitor.readLine);
-
-
     }
-}
+        public void calcularPreco (float margem) throws Exception{
+            
+            
+            
+        }
+    }    
