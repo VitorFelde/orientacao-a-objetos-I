@@ -6,6 +6,8 @@ public class preco_custo {
     private float precoCusto;
     private String categoria;
     
+    public preco_custo pc = new preco_custo();
+
     public String getCodigo() {
         return codigo;
     }

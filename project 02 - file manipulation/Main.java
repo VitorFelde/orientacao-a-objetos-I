@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 
 public class Main {
+
+    preco_custo pc1 = new preco_custo(); 
     public static void main(String[] args) throws Exception{
         //like scanf
         BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
@@ -66,5 +68,9 @@ public class Main {
 
     } 
     
-    public void calcularPreco (){}
+    public void calcularPreco (float margem){
+        pc1.getCodigo(leitor.readLine);
+
+
+    }
 }
