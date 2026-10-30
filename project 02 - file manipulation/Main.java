@@ -14,7 +14,9 @@ import java.io.InputStreamReader;
 
 public class Main {
 
+    //to get the gets and sets
     preco_custo pc1 = new preco_custo(); 
+    preco_venda pv1 = new preco_venda(); 
     public static void main(String[] args) throws Exception{
         //like scanf
         BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
