@@ -19,12 +19,13 @@
             Main objeto = new Main();       
             objeto.arquivos();
             objeto.menu();
+            
         } 
         
 
         public void arquivos () throws Exception{
             
-            preco_venda pv1 = new preco_venda(); 
+            //preco_venda pv1 = new preco_venda(); 
             
             //like scanf
             
@@ -61,6 +62,19 @@
             pc1.setCategoria(campos[4]);
             
             }
+
+        public void converterArquivos(){
+
+            preco_custo pc1 = new preco_custo();
+            preco_venda pv1 = new preco_venda();
+
+            pv1.setCodigo(pc1.getCodigo());
+            pv1.setNome(pc1.getProduto());
+            pv1.setProduto(pc1.getProduto());
+            //pv1.setPrecoVenda(pc1.getCodigo());
+
+
+        }
 
 
         public void menu () throws Exception{
