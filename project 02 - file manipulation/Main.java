@@ -17,68 +17,45 @@
         
         public static void main(String[] args) throws Exception{
             Main objeto = new Main();       
-            objeto.arquivos();
             objeto.menu();
             
         } 
         
+        public void lerArquivos(int margem) throws Exception {
+            BufferedReader ler = new BufferedReader(new FileReader("preco_custo.csv"));
+            String linha = "codigo;nome_produto;preco_venda";
+            BufferedWriter escrever = new BufferedWriter(new FileWriter("preco_venda.csv"));
+            
+            escrever.write("codigo;nome_produto;preco_venda");
 
-        public void arquivos () throws Exception{
-            
-            //preco_venda pv1 = new preco_venda(); 
-            
-            //like scanf
-            
-            //writing files
-            String arqEscrever = "preco_venda.csv"; 
-            BufferedWriter escrever = new BufferedWriter(new FileWriter(arqEscrever));
-            String camposWrite = "codigo;nome_produto;preco_venda";
-            
-            //reading files
-            String arqLeitura = "preco_custo.csv";
-            BufferedReader ler = new BufferedReader(new FileReader(arqLeitura));
-            String camposReader = "codigo;estoque;produto;preco_custo;categoria";
-
-            String linhaLeitura = "";
-            
-            linhaLeitura = ler.readLine(); //getting the infos from the .csv file
-
-            escrever.write(camposWrite);
-        
-            escrever.close();
-            
-        }
-
-        public void lerArquivos(String linhaLeitura) throws Exception {
-            
-            String[] campos = linhaLeitura.split(";");
-                        
             preco_custo pc1 = new preco_custo();
-            
-            pc1.setCodigo(Integer.parseInt(campos[0]));
-            pc1.setEstoque(Integer.parseInt(campos[1]));
-            pc1.setProduto(campos[2]);
-            pc1.setPrecoCusto(Float.parseFloat(campos[3]));           
-            pc1.setCategoria(campos[4]);
-            
+            ler.readLine();
+            String linhaLeitura;
+
+            while ((linhaLeitura = ler.readLine()) != null) {
+                String[] campos = linhaLeitura.split(";");
+                
+                
+                pc1.setCodigo(Integer.parseInt(campos[0]));
+                pc1.setEstoque(Integer.parseInt(campos[1]));
+                pc1.setProduto(campos[2]);
+                pc1.setPrecoCusto(Float.parseFloat(campos[3].replace(",", ".")));           
+                pc1.setCategoria(campos[4]);
+                float precoVenda = pc1.getPrecoCusto() * (1 + (margem / 100f));
+                escrever.newLine();
+                escrever.write(pc1.getCodigo() + ";" + pc1.getProduto() + ";" + precoVenda);
             }
-
-        public void converterArquivos(){
-
-            preco_custo pc1 = new preco_custo();
-            preco_venda pv1 = new preco_venda();
-
-            pv1.setCodigo(pc1.getCodigo());
-            pv1.setNome(pc1.getProduto());
-            pv1.setProduto(pc1.getProduto());
-            //pv1.setPrecoVenda(pc1.getCodigo());
-
-
+            
+            escrever.close();
+            ler.close();
+        
         }
-
 
         public void menu () throws Exception{
+        
         int op;
+        int margem;
+
         do {
 
             System.out.println("Escolha uma das opções: ");
@@ -90,7 +67,9 @@
 
             switch (op) {
                 case 1:
-                    //calcularPreco();
+                    System.out.println("Digite a margem: ");
+                    margem = Integer.parseInt(leitor.readLine());
+                    lerArquivos(margem);
                 break;
             
                 case 2:
@@ -109,9 +88,4 @@
 
         } while (op != 3);
     }
-        public void calcularPreco (float margem) throws Exception{
-            
-            
-            
-        }
-    }    
+}    
