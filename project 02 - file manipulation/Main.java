@@ -25,10 +25,10 @@
             BufferedReader ler = new BufferedReader(new FileReader("preco_custo.csv"));
             BufferedWriter escrever = new BufferedWriter(new FileWriter("preco_venda.csv"));
             
-            escrever.write("codigo;nome_produto;preco_venda");
+            escrever.write("codigo;nome_produto;preco_venda"); //writing in the file weve just opened
 
             preco_custo pc1 = new preco_custo();
-            ler.readLine();
+            ler.readLine(); //with this, we avoid of reading the first line of the headline
             String linhaLeitura;
 
             while ((linhaLeitura = ler.readLine()) != null) {
@@ -38,10 +38,10 @@
                 pc1.setCodigo(Integer.parseInt(campos[0]));
                 pc1.setEstoque(Integer.parseInt(campos[1]));
                 pc1.setProduto(campos[2]);
-                pc1.setPrecoCusto(Float.parseFloat(campos[3].replace(",", ".")));           
+                pc1.setPrecoCusto(Float.parseFloat(campos[3].replace(",", "."))); //using replace to get the value correctly    
                 pc1.setCategoria(campos[4]);
                 float precoVenda = pc1.getPrecoCusto() * (1 + (margem / 100f));
-                escrever.newLine();
+                escrever.newLine(); //giving a space between lines
                 escrever.write(pc1.getCodigo() + ";" + pc1.getProduto() + ";" + precoVenda);
             }
             
