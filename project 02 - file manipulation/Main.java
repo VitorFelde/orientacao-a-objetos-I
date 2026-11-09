@@ -23,7 +23,6 @@
         
         public void lerArquivos(int margem) throws Exception {
             BufferedReader ler = new BufferedReader(new FileReader("preco_custo.csv"));
-            String linha = "codigo;nome_produto;preco_venda";
             BufferedWriter escrever = new BufferedWriter(new FileWriter("preco_venda.csv"));
             
             escrever.write("codigo;nome_produto;preco_venda");
