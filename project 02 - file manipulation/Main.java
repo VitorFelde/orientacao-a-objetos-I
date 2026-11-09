@@ -60,8 +60,7 @@
 
             System.out.println("Escolha uma das opções: ");
             System.out.println("1) Cadastrar margem de lucro");
-            System.out.println("2)a definir");
-            System.out.println("3) Sair");
+            System.out.println("2) Sair");
             System.out.println("Escolha: ");
             op = Integer.parseInt(leitor.readLine());
 
@@ -73,19 +72,15 @@
                 break;
             
                 case 2:
-                    
-                break;
-
-                case 3:
-                    
+                    System.out.println("Saindo do programa.");
                 break;
 
                 default:
-                
+                    System.out.println("Digite uma das opções válidas");
                 break;
             }
 
 
-        } while (op != 3);
+        } while (op != 2);
     }
 }    
