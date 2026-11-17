@@ -6,51 +6,51 @@
 
     -O formato do arquivo de entrada é: codigo, estoque, nome produto, preço de custo e categoria (para teste usar o arquivo preco_custo.csv)*/
 
-    import java.io.BufferedReader;
-    import java.io.BufferedWriter;
-    import java.io.FileReader;
-    import java.io.FileWriter;
-    import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
 
-    public class Main {
-        BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
+public class Main {
+    BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in));
+    
+    public static void main(String[] args) throws Exception{
+        Main objeto = new Main();       
+        objeto.menu();
         
-        public static void main(String[] args) throws Exception{
-            Main objeto = new Main();       
-            objeto.menu();
-            
-        } 
+    } 
+    
+    public void lerArquivos(int margem) throws Exception {
+        BufferedReader ler = new BufferedReader(new FileReader("preco_custo.csv"));
+        BufferedWriter escrever = new BufferedWriter(new FileWriter("preco_venda.csv"));
         
-        public void lerArquivos(int margem) throws Exception {
-            BufferedReader ler = new BufferedReader(new FileReader("preco_custo.csv"));
-            BufferedWriter escrever = new BufferedWriter(new FileWriter("preco_venda.csv"));
-            
-            escrever.write("codigo;nome_produto;preco_venda"); //writing in the file weve just opened
+        escrever.write("codigo;nome_produto;preco_venda"); //writing in the file weve just opened
 
-            preco_custo pc1 = new preco_custo();
-            ler.readLine(); //with this, we avoid of reading the first line of the headline
-            String linhaLeitura;
+        preco_custo pc1 = new preco_custo();
+        ler.readLine(); //with this, we avoid of reading the first line of the headline
+        String linhaLeitura;
 
-            while ((linhaLeitura = ler.readLine()) != null) {
-                String[] campos = linhaLeitura.split(";");
-                
-                
-                pc1.setCodigo(Integer.parseInt(campos[0]));
-                pc1.setEstoque(Integer.parseInt(campos[1]));
-                pc1.setProduto(campos[2]);
-                pc1.setPrecoCusto(Float.parseFloat(campos[3].replace(",", "."))); //using replace to get the value correctly    
-                pc1.setCategoria(campos[4]);
-                float precoVenda = pc1.getPrecoCusto() * (1 + (margem / 100f));
-                escrever.newLine(); //giving a space between lines
-                escrever.write(pc1.getCodigo() + ";" + pc1.getProduto() + ";" + precoVenda);
-            }
+        while ((linhaLeitura = ler.readLine()) != null) {
+            String[] campos = linhaLeitura.split(";");
             
-            escrever.close();
-            ler.close();
-        
+            
+            pc1.setCodigo(Integer.parseInt(campos[0]));
+            pc1.setEstoque(Integer.parseInt(campos[1]));
+            pc1.setProduto(campos[2]);
+            pc1.setPrecoCusto(Float.parseFloat(campos[3].replace(",", "."))); //using replace to get the value correctly    
+            pc1.setCategoria(campos[4]);
+            float precoVenda = pc1.getPrecoCusto() * (1 + (margem / 100f));
+            escrever.newLine(); //giving a space between lines
+            escrever.write(pc1.getCodigo() + ";" + pc1.getProduto() + ";" + precoVenda);
         }
+        
+        escrever.close();
+        ler.close();
+    
+    }
 
-        public void menu () throws Exception{
+    public void menu () throws Exception{
         
         int op;
         int margem;
