@@ -2,7 +2,9 @@ public class Banco {
 
     public static void main(String[] args) {
      
-        public float finalizarSaque (){}
+        contaCorrente cc = new contaCorrente();
+        double saldo = cc.getSaldo();
+        saldo = cc.setSaldo(100);
         
     }
 }

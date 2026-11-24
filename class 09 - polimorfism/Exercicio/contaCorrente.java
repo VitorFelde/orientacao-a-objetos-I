@@ -14,7 +14,7 @@ public class contaCorrente {
 
     private int numeroConta;
     private String nomeCliente;
-    private double saldo;
+    private float saldo;
     public int getNumeroConta() {
         return numeroConta;
     }
@@ -27,7 +27,7 @@ public class contaCorrente {
     public void setNomeCliente(String nomeCliente) {
         this.nomeCliente = nomeCliente;
     }
-    public double getSaldo() {
+    public float getSaldo() {
         return saldo;
     }
     public void setSaldo(float saldo) {
@@ -35,13 +35,13 @@ public class contaCorrente {
     }
 
     public void depos (float valor){
-        double depos = saldo + valor;
-        saldo = depos;
+        float depos = saldo + valor;
+        saldo = depos;  
     }
 
-    public void saque (double valor){
+    public void saque (float valor){
         if (this.saldo > valor) {
-            double saq = (saldo - valor) - (valor * 0.05);
+            float saq = (saldo - valor) - (valor * 0.05);
             saldo = saq;
         } else {
             System.out.println("Saldo insuficiente");
@@ -49,7 +49,7 @@ public class contaCorrente {
 
     }
 
-    public double obterSaldo (){
+    public float obterSaldo (){
         saldo = getSaldo();
         return saldo;
     }
